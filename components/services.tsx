@@ -1,105 +1,56 @@
 "use client"
 
 import {
-  Globe,
-  Database,
-  Megaphone,
-  FileText,
-  Server,
+  ArrowUpRight,
   ClipboardList,
+  Database,
+  FileText,
+  Globe,
+  Megaphone,
   Newspaper,
+  Server,
 } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 const services = [
-  {
-    icon: Globe,
-    title: "Web Design & Desenvolvimento",
-    description:
-      "Criacao de sites modernos, responsivos e otimizados para conversao. Do layout ao deploy, cuidamos de tudo.",
-  },
-  {
-    icon: Database,
-    title: "Tratamento de Dados",
-    description:
-      "Processamento, organizacao e hospedagem de dados na internet com seguranca e performance.",
-  },
-  {
-    icon: Megaphone,
-    title: "Marketing Digital",
-    description:
-      "Estrategias de marketing direto e promocao digital para impulsionar sua marca online.",
-  },
-  {
-    icon: FileText,
-    title: "Edicao de Cadastros & Listas",
-    description:
-      "Edicao profissional de cadastros, listas e produtos graficos para comunicacao empresarial.",
-  },
-  {
-    icon: Server,
-    title: "Hospedagem & Infraestrutura",
-    description:
-      "Provedores de servicos de aplicacao e hospedagem na internet com alta disponibilidade.",
-  },
-  {
-    icon: ClipboardList,
-    title: "Apoio Administrativo",
-    description:
-      "Servicos combinados de escritorio e apoio administrativo para otimizar seus processos.",
-  },
-  {
-    icon: Newspaper,
-    title: "Portais & Conteudo Online",
-    description:
-      "Desenvolvimento de portais, provedores de conteudo e servicos de informacao na internet.",
-  },
+  { icon: Globe, title: "Web design", description: "Sites responsivos, rápidos e pensados para transformar visitas em conversas." },
+  { icon: Megaphone, title: "Marketing direto", description: "Campanhas e comunicação digital para colocar sua marca diante das pessoas certas." },
+  { icon: Database, title: "Tratamento de dados", description: "Organização, processamento e publicação de informações com segurança e agilidade." },
+  { icon: Newspaper, title: "Portais & conteúdo", description: "Estruturas editoriais e canais digitais que mantêm sua audiência informada e próxima." },
+  { icon: Server, title: "Hospedagem", description: "Infraestrutura confiável para aplicações, sites e operações digitais sempre disponíveis." },
+  { icon: FileText, title: "Cadastros & listas", description: "Edição e manutenção de bases, listas e produtos gráficos para a sua comunicação." },
+  { icon: ClipboardList, title: "Apoio administrativo", description: "Rotinas de escritório organizadas para sua equipe ganhar tempo e foco." },
 ]
 
 export function Services() {
   const [headerRef, headerVisible] = useScrollAnimation()
-  const [gridRef, gridVisible] = useScrollAnimation({ threshold: 0.05 })
+  const [listRef, listVisible] = useScrollAnimation({ threshold: 0.05 })
 
   return (
-    <section id="servicos" className="relative py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Header */}
-        <div
-          ref={headerRef}
-          className={`mx-auto max-w-2xl text-center scroll-fade-up ${headerVisible ? "is-visible" : ""}`}
-        >
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-            O que fazemos
-          </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-            <span className="text-balance">Servicos digitais completos para sua empresa</span>
+    <section id="servicos" className="bg-foreground py-24 text-background lg:py-32">
+      <div className="mx-auto grid max-w-[1440px] gap-14 px-5 sm:px-8 lg:grid-cols-[0.72fr_1.28fr] lg:px-10 xl:px-16">
+        <div ref={headerRef} className={`scroll-fade-up ${headerVisible ? "is-visible" : ""}`}>
+          <p className="mb-5 text-sm font-bold uppercase tracking-[0.22em] text-accent">01 — Especialidades</p>
+          <h2 className="max-w-xl font-heading text-5xl font-bold leading-[0.94] tracking-[-0.05em] sm:text-6xl lg:sticky lg:top-28 lg:text-7xl">
+            Uma equipe.<br />Muitas formas<br />de resolver.
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Atuamos em diversas frentes do universo digital para garantir a presenca
-            online e a gestao de informacoes do seu negocio.
-          </p>
         </div>
 
-        {/* Grid */}
-        <div
-          ref={gridRef}
-          className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-        >
+        <div ref={listRef} className="border-t border-background/50">
           {services.map((service, index) => (
-            <div
+            <article
               key={service.title}
-              className={`group scroll-scale-in stagger-${index + 1} rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/40 hover:bg-card/80 ${gridVisible ? "is-visible" : ""}`}
+              className={`group grid gap-4 border-b border-background/50 py-7 scroll-fade-up sm:grid-cols-[3rem_1fr_1.3fr_auto] sm:items-center ${listVisible ? "is-visible" : ""}`}
+              style={{ transitionDelay: `${Math.min(index * 60, 300)}ms` }}
             >
-              <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-3">
-                <service.icon className="h-6 w-6 text-primary" />
+              <span className="text-sm text-background/50">0{index + 1}</span>
+              <div className="flex items-center gap-3">
+                <service.icon className="h-5 w-5 text-accent" />
+                <h3 className="font-heading text-xl font-bold sm:text-2xl">{service.title}</h3>
               </div>
-              <h3 className="font-heading text-lg font-semibold text-foreground">
-                {service.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {service.description}
-              </p>
-            </div>
+              <p className="text-base leading-relaxed text-background/65">{service.description}</p>
+              <ArrowUpRight className="hidden h-5 w-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 sm:block" />
+            </article>
           ))}
         </div>
       </div>

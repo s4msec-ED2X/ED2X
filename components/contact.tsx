@@ -1,96 +1,55 @@
 "use client"
 
-import { Mail, Phone, MapPin, ArrowRight } from "lucide-react"
+import { ArrowUpRight, Mail, MapPin, MessageCircle } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 export function Contact() {
-  const [leftRef, leftVisible] = useScrollAnimation()
-  const [rightRef, rightVisible] = useScrollAnimation()
+  const [ref, visible] = useScrollAnimation()
 
   return (
-    <section id="contato" className="relative py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Left */}
-          <div
-            ref={leftRef}
-            className={`scroll-fade-left ${leftVisible ? "is-visible" : ""}`}
-          >
-            <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-              Contato
-            </p>
-            <h2 className="mt-3 font-heading text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-              <span className="text-balance">Vamos conversar sobre o seu projeto?</span>
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Entre em contato conosco e descubra como podemos transformar sua
-              presenca digital em resultados concretos para o seu negocio.
-            </p>
+    <section id="contato" className="bg-background py-24 lg:py-32">
+      <div ref={ref} className={`mx-auto max-w-[1440px] px-5 scroll-fade-up sm:px-8 lg:px-10 xl:px-16 ${visible ? "is-visible" : ""}`}>
+        <div className="flex items-center justify-between border-t-2 border-foreground pt-3 text-sm font-bold uppercase tracking-[0.2em]">
+          <span>04 — Contato</span>
+          <span className="hidden sm:inline">Vamos tirar a ideia do papel</span>
+        </div>
 
+        <div className="grid gap-12 py-14 lg:grid-cols-[1.3fr_0.7fr] lg:items-end">
+          <div>
+            <h2 className="max-w-5xl font-heading text-[clamp(3.6rem,8vw,8rem)] font-bold leading-[0.84] tracking-[-0.07em]">
+              Seu próximo projeto começa com um <span className="text-primary">olá.</span>
+            </h2>
             <a
               href="https://wa.me/5511962140330"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+              className="mt-10 inline-flex w-full items-center justify-between border-2 border-foreground bg-accent px-6 py-5 font-heading text-xl font-bold shadow-[6px_6px_0_hsl(var(--foreground))] transition-transform hover:-translate-y-1 sm:w-auto sm:min-w-[23rem]"
             >
-              Falar pelo WhatsApp
-              <ArrowRight className="h-4 w-4" />
+              Chamar no WhatsApp <ArrowUpRight className="h-6 w-6" />
             </a>
           </div>
 
-          {/* Right - Contact info */}
-          <div
-            ref={rightRef}
-            className={`flex flex-col gap-4 scroll-fade-right ${rightVisible ? "is-visible" : ""}`}
-          >
-            <div className={`flex items-center gap-4 rounded-xl border border-border bg-card p-5 scroll-scale-in stagger-1 ${rightVisible ? "is-visible" : ""}`}>
-              <div className="rounded-lg bg-primary/10 p-3">
-                <Mail className="h-5 w-5 text-primary" />
-              </div>
+          <div className="border-t-2 border-foreground">
+            <a href="mailto:diogohcpacheco@gmail.com" className="group flex items-start gap-4 border-b border-foreground/40 py-6">
+              <Mail className="mt-0.5 h-5 w-5 text-primary" />
               <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                  E-mail
-                </p>
-                <a
-                  href="mailto:diogohcpacheco@gmail.com"
-                  className="mt-1 font-medium text-foreground transition-colors hover:text-primary"
-                >
-                  diogohcpacheco@gmail.com
-                </a>
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground">E-mail</p>
+                <p className="mt-1 break-all font-semibold group-hover:text-primary">diogohcpacheco@gmail.com</p>
               </div>
-            </div>
-
-            <div className={`flex items-center gap-4 rounded-xl border border-border bg-card p-5 scroll-scale-in stagger-2 ${rightVisible ? "is-visible" : ""}`}>
-              <div className="rounded-lg bg-primary/10 p-3">
-                <Phone className="h-5 w-5 text-primary" />
-              </div>
+            </a>
+            <a href="tel:+5511962140330" className="group flex items-start gap-4 border-b border-foreground/40 py-6">
+              <MessageCircle className="mt-0.5 h-5 w-5 text-primary" />
               <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                  Telefone / WhatsApp
-                </p>
-                <a
-                  href="tel:+5511962140330"
-                  className="mt-1 font-medium text-foreground transition-colors hover:text-primary"
-                >
-                  (11) 96214-0330
-                </a>
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground">Telefone</p>
+                <p className="mt-1 font-semibold group-hover:text-primary">(11) 96214-0330</p>
               </div>
-            </div>
-
-            <div className={`flex items-center gap-4 rounded-xl border border-border bg-card p-5 scroll-scale-in stagger-3 ${rightVisible ? "is-visible" : ""}`}>
-              <div className="rounded-lg bg-primary/10 p-3">
-                <MapPin className="h-5 w-5 text-primary" />
-              </div>
+            </a>
+            <div className="flex items-start gap-4 py-6">
+              <MapPin className="mt-0.5 h-5 w-5 text-primary" />
               <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                  Endereco
-                </p>
-                <p className="mt-1 font-medium text-foreground">
-                  Rua Coronel Augusto Cesar, 489 - Centro
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Leme - SP | CEP 13610-190
-                </p>
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground">Sede</p>
+                <p className="mt-1 font-semibold">Rua Coronel Augusto Cesar, 489, Sala 01</p>
+                <p className="text-sm text-muted-foreground">Centro · Leme/SP · CEP 13610-190</p>
               </div>
             </div>
           </div>

@@ -1,82 +1,79 @@
 "use client"
 
 import { useState } from "react"
-import { Menu, X } from "lucide-react"
-import { Logo } from "@/components/logo"
+import { ArrowUpRight, Menu, X } from "lucide-react"
+import { LogoDark } from "./logo"
 
 const navLinks = [
-  { href: "#servicos", label: "Servicos" },
-  { href: "#quem-somos", label: "Quem Somos" },
-  { href: "#missao", label: "Missao & Visao" },
+  { href: "#servicos", label: "Serviços" },
+  { href: "#quem-somos", label: "Estúdio" },
   { href: "#contato", label: "Contato" },
-  { href: "#privacidade", label: "Privacidade" },
 ]
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-        {/* Logo */}
-        <a href="#" className="flex items-center">
-          <Logo size="sm" />
+    <header className="fixed inset-x-0 top-0 z-50 border-b-2 border-foreground bg-background/95 backdrop-blur-xl">
+      <nav className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-5 lg:px-10">
+        <a href="#inicio" aria-label="ED2X ADS — início" className="flex items-center">
+          <LogoDark size="sm" />
         </a>
 
-        {/* Desktop Nav */}
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-9 md:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm font-semibold uppercase tracking-[0.14em] transition-colors hover:text-primary"
             >
               {link.label}
             </a>
           ))}
         </div>
 
-        {/* CTA */}
         <a
           href="https://wa.me/5511962140330"
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 md:inline-flex"
+          className="hidden items-center gap-2 border-2 border-foreground bg-accent px-5 py-2.5 text-sm font-bold uppercase tracking-wider shadow-[4px_4px_0_hsl(var(--foreground))] transition-transform hover:-translate-y-0.5 md:inline-flex"
         >
-          Fale Conosco
+          Iniciar projeto
+          <ArrowUpRight className="h-4 w-4" />
         </a>
 
-        {/* Mobile toggle */}
         <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="text-foreground md:hidden"
+          type="button"
+          onClick={() => setIsOpen((open) => !open)}
+          className="grid h-11 w-11 place-items-center border-2 border-foreground md:hidden"
           aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={isOpen}
         >
-          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </nav>
 
-      {/* Mobile Menu */}
       {isOpen && (
-        <div className="border-t border-border/50 bg-background/95 backdrop-blur-xl md:hidden">
-          <div className="flex flex-col gap-1 px-6 py-4">
-            {navLinks.map((link) => (
+        <div className="border-t-2 border-foreground bg-background md:hidden">
+          <div className="flex flex-col px-5 py-5">
+            {navLinks.map((link, index) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                className="flex items-center justify-between border-b border-foreground/30 py-4 font-heading text-2xl font-bold"
               >
-                {link.label}
+                <span>{link.label}</span>
+                <span className="text-sm font-normal">0{index + 1}</span>
               </a>
             ))}
             <a
               href="https://wa.me/5511962140330"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 rounded-lg bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+              className="mt-5 flex items-center justify-center gap-2 bg-primary px-5 py-4 font-bold text-primary-foreground"
             >
-              Fale Conosco
+              Falar no WhatsApp <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
         </div>

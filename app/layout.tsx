@@ -14,14 +14,14 @@ const _spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'ED2X | Servicos Digitais - Tecnologia, Design & Marketing',
+  title: 'ED2X ADS | Design, tecnologia e conteúdo',
   description:
-    'ED2X - Solucoes digitais completas para infraestrutura de dados, presenca online e servicos administrativos. Tecnologia, Web Design e Marketing Digital.',
-  keywords: ['tecnologia', 'web design', 'marketing digital', 'servicos digitais', 'ED2X'],
+    'Estratégia, design, tecnologia, publicidade e conteúdo para empresas que querem avançar no digital.',
+  keywords: ['tecnologia', 'web design', 'marketing digital', 'publicidade', 'conteúdo', 'ED2X ADS'],
 }
 
 export const viewport: Viewport = {
-  themeColor: '#0a0a0a',
+  themeColor: '#f9f7ef',
 }
 
 export default function RootLayout({

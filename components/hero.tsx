@@ -1,91 +1,70 @@
-import { ArrowRight, MessageCircle } from "lucide-react"
-import { Logo } from "@/components/logo"
+import Image from "next/image"
+import { ArrowDown, ArrowUpRight } from "lucide-react"
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden pt-20">
-      {/* Grid background */}
-      <div className="pointer-events-none absolute inset-0">
-        {/* grid azul */}
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage: `
-        linear-gradient(to right, hsl(220 20% 20%) 1px, transparent 1px),
-        linear-gradient(to bottom, hsl(220 20% 20%) 1px, transparent 1px)
-      `,
-            backgroundSize: '4rem 4rem',
-          }}
-        />
+    <section id="inicio" className="relative min-h-screen border-b-2 border-foreground pt-[72px]">
+      <div className="grid min-h-[calc(100vh-72px)] lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="relative flex flex-col justify-between px-5 py-10 sm:px-8 lg:px-10 lg:py-12 xl:px-16">
+          <div className="animate-hero-brand flex items-center justify-between border-t-2 border-foreground pt-3 text-xs font-bold uppercase tracking-[0.2em]">
+            <span>Estúdio digital independente</span>
+            <span>Leme · SP</span>
+          </div>
 
-        {/* glow azul */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              'radial-gradient(ellipse at center, rgba(59,130,246,0.12), transparent 70%)',
-          }}
-        />
-      </div>
-      <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <div className="flex flex-col items-center text-center">
-          {/* Large ED2X brand */}
-          <div className="animate-hero-brand mb-6">
-            <h1>
-              <Logo size="hero" />
+          <div className="py-16 lg:py-10">
+            <p className="animate-hero-text-1 mb-6 max-w-md text-base font-semibold leading-relaxed text-muted-foreground">
+              Estratégia, design e tecnologia trabalhando juntos para transformar presença digital em movimento de negócio.
+            </p>
+            <h1 className="animate-hero-text-2 max-w-3xl font-heading text-[clamp(3.4rem,7vw,7.6rem)] font-bold leading-[0.84] tracking-[-0.07em]">
+              Ideias que ganham <span className="text-primary">forma.</span>
             </h1>
-          </div>
 
-          {/* Tagline */}
-          <p className="animate-hero-text-1 max-w-2xl font-heading text-xl font-medium tracking-wide text-muted-foreground sm:text-2xl">
-            Tecnologia, Design & Marketing Digital
-          </p>
-
-          {/* Headline */}
-          <h2 className="animate-hero-text-2 mt-6 max-w-3xl text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">
-            Da criacao ao suporte — solucoes completas em servicos digitais, gestao
-            de dados e comunicacao online para empresas de todos os portes.
-          </h2>
-
-          {/* CTAs */}
-          <div className="animate-hero-text-3 mt-10 flex flex-col gap-4 sm:flex-row">
-            <a
-              href="https://wa.me/5511962140330"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-green-400 px-8 py-4 text-base font-semibold text-primary-foreground transition-opacity hover:opacity-90"
-            >
-              <MessageCircle />
-              Whatsapp
-              <ArrowRight className="h-4 w-4" />
-            </a>
-            <a
-              href="#servicos"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-secondary px-8 py-4 text-base font-semibold text-secondary-foreground transition-colors hover:bg-secondary/80"
-            >
-              Nossos Servicos
-            </a>
-          </div>
-
-          {/* Stats - only real data */}
-          <div className="animate-hero-text-3 mt-20 grid w-full max-w-2xl grid-cols-3 gap-4">
-            {[
-              { value: "2020", label: "Atuando desde" },
-              { value: "7", label: "Areas de atuacao" },
-              { value: "SP", label: "Interior paulista" },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-xl border border-border bg-card p-6 text-center"
+            <div className="animate-hero-text-3 mt-10 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="https://wa.me/5511962140330"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-between gap-6 bg-foreground px-6 py-4 font-bold text-background transition-colors hover:bg-primary sm:min-w-56"
               >
-                <div className="font-heading text-2xl font-bold text-primary md:text-3xl">
-                  {stat.value}
-                </div>
-                <div className="mt-1 text-xs text-muted-foreground md:text-sm">
-                  {stat.label}
-                </div>
+                Conte seu projeto <ArrowUpRight className="h-5 w-5" />
+              </a>
+              <a
+                href="#servicos"
+                className="inline-flex items-center justify-between gap-6 border-2 border-foreground px-6 py-4 font-bold transition-colors hover:bg-accent sm:min-w-52"
+              >
+                Ver especialidades <ArrowDown className="h-5 w-5" />
+              </a>
+            </div>
+          </div>
+
+          <div className="animate-hero-text-3 grid grid-cols-3 border-y-2 border-foreground">
+            {[
+              ["2023", "Em atividade"],
+              ["07", "Especialidades"],
+              ["100%", "Sob medida"],
+            ].map(([value, label]) => (
+              <div key={label} className="border-r border-foreground/40 py-4 last:border-r-0">
+                <p className="font-heading text-xl font-bold sm:text-2xl">{value}</p>
+                <p className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{label}</p>
               </div>
             ))}
+          </div>
+        </div>
+
+        <div className="relative min-h-[60vh] overflow-hidden border-t-2 border-foreground lg:min-h-0 lg:border-l-2 lg:border-t-0">
+          <Image
+            src="/ed2x-hero-studio.png"
+            alt="Composição abstrata em azul, verde-limão, vidro e metal"
+            fill
+            priority
+            sizes="(min-width: 1024px) 55vw, 100vw"
+            className="object-cover"
+          />
+          <div className="absolute right-5 top-5 border-2 border-white bg-primary px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white">
+            Digital / Conteúdo / Ads
+          </div>
+          <div className="absolute bottom-5 left-5 max-w-[16rem] bg-accent p-4 text-sm font-bold leading-snug text-accent-foreground shadow-[5px_5px_0_#fff]">
+            Construímos presença digital com clareza, personalidade e intenção.
           </div>
         </div>
       </div>

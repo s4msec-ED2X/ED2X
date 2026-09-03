@@ -19,3 +19,13 @@ export function Logo({ size = "md", className = "" }: LogoProps) {
     />
   )
 }
+
+export function LogoDark({ size = "md", className = "" }: LogoProps) {
+  return (
+    <img
+      src="/ed2x-logo-dark.svg"
+      alt="ED2X"
+      className={`${heightMap[size]} w-auto ${className}`}
+    />
+  )
+}

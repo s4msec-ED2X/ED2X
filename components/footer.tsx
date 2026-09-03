@@ -1,75 +1,43 @@
-"use client"
-
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { Logo } from "@/components/logo"
+import { ArrowUp } from "lucide-react"
+import { LogoDark } from "@/components/logo"
 
 export function Footer() {
-  const [ref, isVisible] = useScrollAnimation({ threshold: 0.1 })
-
   return (
-    <footer ref={ref} className="border-t border-border bg-card">
-      <div className={`mx-auto max-w-7xl px-6 py-12 lg:px-8 scroll-fade-up ${isVisible ? "is-visible" : ""}`}>
-        <div className="grid gap-8 md:grid-cols-3">
-          {/* Brand */}
+    <footer className="bg-foreground text-background">
+      <div className="mx-auto max-w-[1440px] px-5 py-12 sm:px-8 lg:px-10 xl:px-16">
+        <div className="grid gap-10 border-b border-background/30 pb-12 md:grid-cols-[1.2fr_0.8fr_1fr]">
           <div>
-            <Logo size="md" />
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Solucoes digitais completas para infraestrutura de dados, presenca
-              online e servicos administrativos.
-            </p>
+            <LogoDark size="md" />
+            <p className="mt-5 max-w-sm text-base leading-relaxed text-background/60">Design, tecnologia, publicidade e conteúdo para marcas que querem ocupar seu espaço.</p>
           </div>
-
-          {/* Links */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">
-              Navegacao
-            </h4>
-            <ul className="flex flex-col gap-2">
-              {[
-                { href: "#servicos", label: "Servicos" },
-                { href: "#quem-somos", label: "Quem Somos" },
-                { href: "#missao", label: "Missao & Visao" },
-                { href: "#contato", label: "Contato" },
-                { href: "#privacidade", label: "Politica de Privacidade" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal info */}
-          <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">
-              Dados Oficiais
-            </h4>
-            <div className="flex flex-col gap-2 text-sm text-muted-foreground">
-              <p>CNPJ: 37.087.041/0001-77</p>
-              <p>DHCP Servicos Digitais LTDA</p>
-              <p>Rua Cel. Augusto Cesar, 489</p>
-              <p>Centro, Leme - SP | 13610-190</p>
-              <p>(11) 96214-0330</p>
-              <p>diogohcpacheco@gmail.com</p>
-              <p className="mt-1 text-xs">Optante pelo Simples Nacional</p>
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-accent">Navegação</p>
+            <div className="flex flex-col items-start gap-2">
+              <a href="#servicos" className="hover:text-accent">Especialidades</a>
+              <a href="#quem-somos" className="hover:text-accent">O estúdio</a>
+              <a href="#contato" className="hover:text-accent">Contato</a>
+              <a href="#privacidade" className="hover:text-accent">Privacidade</a>
             </div>
+          </div>
+          <div>
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-accent">Dados oficiais</p>
+            <p className="max-w-sm text-sm leading-relaxed text-background/65">
+              ED2XADS SERVICOS DE PUBLICIDADE E CONTEUDO LTDA<br />
+              CNPJ 49.615.553/0001-48<br />
+              Rua Cel. Augusto Cesar, 489, Sala 01<br />
+              Centro · Leme/SP · 13610-190
+            </p>
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
-          <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} ED2X - DHCP Servicos Digitais LTDA.
-            Todos os direitos reservados.
-          </p>
-          <p className="text-xs text-muted-foreground">
-            Situacao cadastral: Ativa | Desde 07/05/2020
-          </p>
+        <div className="flex flex-col gap-5 pt-7 text-xs text-background/55 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} ED2X ADS. Todos os direitos reservados.</p>
+          <div className="flex items-center gap-6">
+            <span>Situação cadastral: ativa</span>
+            <a href="#inicio" aria-label="Voltar ao início" className="grid h-10 w-10 place-items-center border border-background/50 text-background hover:border-accent hover:text-accent">
+              <ArrowUp className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>
