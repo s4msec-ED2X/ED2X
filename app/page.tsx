@@ -6,14 +6,10 @@ import { Mission } from "@/components/mission"
 import { Contact } from "@/components/contact"
 import { PrivacyPolicy } from "@/components/privacy-policy"
 import { Footer } from "@/components/footer"
-import Head from "next/head"
 
 export default function Page() {
   return (
     <>
-      <Head>
-        <meta name="facebook-domain-verification" content="0ma4uwex3kbuyruq3tox5kmzqc3ooh" />
-      </Head>
       <main className="overflow-hidden">
         <Navbar />
         <Hero />

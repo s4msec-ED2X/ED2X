@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   description:
     'Estratégia, design, tecnologia, publicidade e conteúdo para empresas que querem avançar no digital.',
   keywords: ['tecnologia', 'web design', 'marketing digital', 'publicidade', 'conteúdo', 'ED2X ADS'],
+  verification: {
+    other: {
+      'facebook-domain-verification': '0ma4uwex3kbuyruq3tox5kmzqc3ooh',
+    },
+  },
 }
 
 export const viewport: Viewport = {
