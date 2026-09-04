@@ -1,5 +1,5 @@
 import { ArrowUp } from "lucide-react"
-import { LogoDark } from "@/components/logo"
+import { Logo } from "@/components/logo"
 
 export function Footer() {
   return (
@@ -7,7 +7,7 @@ export function Footer() {
       <div className="mx-auto max-w-[1440px] px-5 py-12 sm:px-8 lg:px-10 xl:px-16">
         <div className="grid gap-10 border-b border-background/30 pb-12 md:grid-cols-[1.2fr_0.8fr_1fr]">
           <div>
-            <LogoDark size="md" />
+            <Logo size="md" />
             <p className="mt-5 max-w-sm text-base leading-relaxed text-background/60">Design, tecnologia, publicidade e conteúdo para marcas que querem ocupar seu espaço.</p>
           </div>
           <div>
